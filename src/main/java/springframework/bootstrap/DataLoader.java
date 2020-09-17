@@ -8,6 +8,8 @@ import springframework.domain.*;
 import springframework.repositories.CategoryRepository;
 import springframework.repositories.RecipeRepository;
 import springframework.repositories.UnitOfMeasureRepository;
+
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
