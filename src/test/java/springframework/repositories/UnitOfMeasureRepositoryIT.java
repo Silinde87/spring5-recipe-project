@@ -28,8 +28,8 @@ public class UnitOfMeasureRepositoryIT {
     public void findByDescription() throws Exception{
 
         //Asking the repository to look up by "Teaspoon"
-        Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
-        assertEquals("Teaspoon", uomOptional.get().getDescription());
+        Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Tablespoon");
+        assertEquals("Tablespoon", uomOptional.get().getDescription());
     }
 
     @Test
@@ -39,4 +39,5 @@ public class UnitOfMeasureRepositoryIT {
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Cup");
         assertEquals("Cup", uomOptional.get().getDescription());
     }
+
 }
