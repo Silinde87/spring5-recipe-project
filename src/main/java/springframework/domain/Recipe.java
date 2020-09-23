@@ -43,8 +43,10 @@ public class Recipe extends BaseEntity{
     private Set<Category> categories = new HashSet<>();
 
     public void setNotes(Notes notes) {
-        this.notes = notes;
-        notes.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient){
