@@ -43,6 +43,12 @@ public class RecipeServiceImpl implements RecipeService {
         if(!recipeOptional.isPresent()){
             throw new NotFoundException("Recipe Not Found! For ID value: " + l.toString());
         }
+        /*
+        try{
+            Long.parseLong(l.toString());
+        }catch (NumberFormatException ex){
+            throw new NumberFormatException("Number Format Exception! For ID value: " + l.toString());
+        }*/
 
         return recipeOptional.get();
     }
