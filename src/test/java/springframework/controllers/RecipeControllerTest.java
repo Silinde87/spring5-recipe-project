@@ -2,6 +2,7 @@ package springframework.controllers;
 
 import springframework.commands.RecipeCommand;
 import springframework.domain.Recipe;
+import springframework.exceptions.NotFoundException;
 import springframework.services.RecipeService;
 import org.mockito.Mock;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,6 +51,17 @@ public class RecipeControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception{
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound());
     }
 
     @Test
