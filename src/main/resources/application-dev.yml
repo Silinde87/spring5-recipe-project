@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/silinde_dev
+    url: jdbc:mysql://localhost:3306/silinde_dev?&useTimezone=true&serverTimezone=UTC
     username: silinde_dev_user
     password: silinde87
   jpa:
@@ -9,3 +9,12 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
+    spring.datasource.initialization-mode: always
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: silinde_database_create.sql
